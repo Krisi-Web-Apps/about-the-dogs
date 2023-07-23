@@ -1,0 +1,28 @@
+:root {
+  --text-heading-color: #292929;
+  --text-body-color: #4d4b4b;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: var(--text-body-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: var(--text-heading-color);
+}
+
+.bg-light-gray {
+  background-color: #efefef;
+}
+
+.home-header-content {
+  max-width: 600px;
+  text-align-last: center;
+}
+
+.home-section-content {
+  max-width: 600px;
+  text-align: justify;
+}
