@@ -5,7 +5,7 @@ if ($_POST["type-form"] == "register") {
   $password = htmlspecialchars($_POST["password"]);
   $cpassword = htmlspecialchars($_POST["cpassword"]);
   $fullname = htmlspecialchars($_POST["fullname"]);
-  $remember = isset($_POST["remember"]) ? $_POST["remember"] : FALSE;
+  $accept = isset($_POST["accept"]) ? $_POST["accept"] : FALSE;
 
   if (empty($email) || empty($password) || empty($cpassword) || empty($fullname)) {
     $_SESSION["error_message"] = "Всички полета са задължителни.";
@@ -22,6 +22,21 @@ if ($_POST["type-form"] == "register") {
     return;
   }
 
+  if (empty($accept)) {
+    $_SESSION["error_message"] = "Трябва да се съгласите с Общите условия и Политиката за поверителност.";
+    return;
+  }
+
+  global $db;
+
+  $params = array(":email" => $email);
+  $isEmailExists = $db->select("SELECT id, email FROM `users` WHERE email = :email;", $params);
+
+  if ($isEmailExists) {
+    $_SESSION["error_message"] = "Този e-mail адрес вече е зает.";
+    return;
+  }
+
   $password = password_hash($password, PASSWORD_BCRYPT);
 
   $data = array(
@@ -31,7 +46,6 @@ if ($_POST["type-form"] == "register") {
   );
 
   $_SESSION["success_message"] = "Вие се регистрирахте успешно.";
-  global $db;
   $db->insert("users", $data);
   header("Location: /");
 }

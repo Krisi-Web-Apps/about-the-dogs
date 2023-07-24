@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/">
       <img width="40" height="40" class="rounded-circle" src="/assets/images/капибара.jpg" alt="Капибара">
       <span>Капибара</span>
     </a>
@@ -9,9 +9,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbar-items">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Начало</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/locations">Локации</a>
         </li>

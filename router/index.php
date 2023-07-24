@@ -18,6 +18,14 @@ $router->addRoute("/gallery", function () {
   view("gallery");
 });
 
+$router->addRoute("/terms-of-use", function () {
+  view("terms-of-use");
+});
+
+$router->addRoute("/privacy-policy", function () {
+  view("privacy-policy");
+});
+
 require "auth/router.php";
 
 $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
