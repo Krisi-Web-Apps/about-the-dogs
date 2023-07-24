@@ -95,8 +95,8 @@ if ($_POST["type-form"] == "login") {
   ));
 
   afterLogin(array(
-    "id" => $user["id"],
-    "password" => $user["password"],
+    "user_id" => $user[0]["id"],
+    "user_password" => $user[0]["password"],
     "token" => $token,
   ));
 }

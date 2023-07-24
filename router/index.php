@@ -27,6 +27,7 @@ $router->addRoute("/privacy-policy", function () {
 });
 
 require "auth/router.php";
+require "users/router.php";
 
 $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $router->handleRequest($currentPath);

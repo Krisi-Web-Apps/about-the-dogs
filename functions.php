@@ -8,10 +8,7 @@ function view($templateName, $data = array())
 
 function afterLogin($auth)
 {
-  $_SESSION["auth"] = array(
-    "id" => $auth["id"],
-    "password" => $auth["password"],
-  );
+  setSession($auth);
   $_SESSION["success_message"] = "Влязохте в системата.";
   header("Location: /");
 }
@@ -28,14 +25,38 @@ function generateToken()
 function logout($userId = NULL) {
   if ($userId != NULL) {
     $_SESSION["worning_message"] = "Вие вече сте изван системата.";
-    $_SESSION["auth"] = array(
-      "user_id" => $userId,
-    );
+    $_SESSION["user_id"] = $userId;
   }
   global $db;
   $params = array(
-    ":user_id" => $_SESSION["auth"]["user_id"],
+    ":user_id" => $_SESSION["user_id"],
   );
   $db->delete("sessions", "user_id = :user_id", $params);
-  unset($_SESSION["auth"]);
+  unsetSession();
+}
+
+function isAuthenticated() {
+  global $db;
+
+  if (isset($_SESSION["user_id"]) == FALSE) {
+    return FALSE;
+  }
+
+  $params = array(
+    ":user_id" => $_SESSION["user_id"],
+  );
+  $session = $db->select("SELECT * FROM `sessions` WHERE user_id = :user_id;", $params);
+  return $session != FALSE;
+}
+
+function setSession($auth) {
+  $_SESSION["user_id"] = $auth["user_id"];
+  $_SESSION["user_password"] = $auth["user_password"];
+  $_SESSION["token"] = $auth["token"];
+}
+
+function unsetSession() {
+  unset($_SESSION["user_id"]);
+  unset($_SESSION["user_password"]);
+  unset($_SESSION["token"]);
 }

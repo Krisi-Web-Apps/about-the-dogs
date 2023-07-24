@@ -1,13 +1,13 @@
 <?php
 
-$BASE_PATH = "/auth";
-
-$router->addRoute("$BASE_PATH/register", function () {
-  global $BASE_PATH;
-  view("$BASE_PATH/register");
+$router->addRoute("/auth/register", function () {
+  view("/auth/register");
 });
 
-$router->addRoute("$BASE_PATH/login", function () {
-  global $BASE_PATH;
-  view("$BASE_PATH/login");
+$router->addRoute("/auth/login", function () {
+  view("/auth/login");
+});
+
+$router->addRoute("/auth/logout", function () {
+  view("/auth/logout");
 });

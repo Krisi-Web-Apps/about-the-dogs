@@ -16,15 +16,27 @@
           <a class="nav-link" aria-current="page" href="/gallery">Галерия</a>
         </li>
       </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/auth/login">Вход</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/auth/register">Регистрация</a>
-          <!-- <a class="nav-link" aria-current="page" href="/admin">Администрация</a> -->
-        </li>
-      </ul>
+      
+      <?php if (isAuthenticated() == FALSE): ?>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/auth/login">Вход</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/auth/register">Регистрация</a>
+            <!-- <a class="nav-link" aria-current="page" href="/admin">Администрация</a> -->
+          </li>
+        </ul>
+      <?php else: ?>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/users/account">Профил</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/auth/logout">Изход</a>
+          </li>
+        </ul>
+      <?php endif; ?>
     </div>
   </div>
 </nav>
