@@ -27,20 +27,20 @@ $fullname = isset($_POST["fullname"]) ? $_POST["fullname"] : null;
     <form method="post">
       <div class="mb-3">
         <label for="email" class="form-label">E-mail address</label>
-        <input type="email" class="form-control" name="email" id="email" value="<?= $email ?>" aria-describedby="email-help">
+        <input type="email" class="form-control" name="email" id="email" value="<?= $email ?>" aria-describedby="email-help" required>
         <div id="email-help" class="form-text">Въведете валиден e-mail адрес.</div>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Парола</label>
-        <input type="password" class="form-control" name="password" id="password">
+        <input type="password" class="form-control" name="password" id="password" required>
       </div>
       <div class="mb-3">
         <label for="cpassword" class="form-label">Повторете паролата</label>
-        <input type="password" class="form-control" name="cpassword" id="cpassword">
+        <input type="password" class="form-control" name="cpassword" id="cpassword" required>
       </div>
       <div class="mb-3">
         <label for="fullname" class="form-label">Име</label>
-        <input type="text" class="form-control" name="fullname" value="<?= $fullname ?>" id="fullname">
+        <input type="text" class="form-control" name="fullname" value="<?= $fullname ?>" id="fullname" required>
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" name="accept" id="accept">
@@ -54,6 +54,9 @@ $fullname = isset($_POST["fullname"]) ? $_POST["fullname"] : null;
       </div>
       <div class="text-center">
         <button name="type-form" value="register" type="submit" class="btn btn-primary">Регистрация</button>
+      </div>
+      <div class="mt-3 text-center">
+        <a href="/auth/login">Влизане в системата</a>
       </div>
     </form>
   </div>

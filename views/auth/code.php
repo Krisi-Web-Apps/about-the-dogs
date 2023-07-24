@@ -22,7 +22,7 @@ if ($_POST["type-form"] == "register") {
     return;
   }
 
-  if (empty($accept)) {
+  if ($accept == FALSE) {
     $_SESSION["error_message"] = "Трябва да се съгласите с Общите условия и Политиката за поверителност.";
     return;
   }
@@ -47,5 +47,56 @@ if ($_POST["type-form"] == "register") {
 
   $_SESSION["success_message"] = "Вие се регистрирахте успешно.";
   $db->insert("users", $data);
-  header("Location: /");
+  header("Location: /auth/login");
+}
+
+if ($_POST["type-form"] == "login") {
+  $email = htmlspecialchars($_POST["email"]);
+  $password = htmlspecialchars($_POST["password"]);
+
+  if (empty($email) || empty($password)) {
+    $_SESSION["error_message"] = "Всички полета са задължителни.";
+    return;
+  }
+  
+  global $db;
+
+  $params = array(":email" => $email);
+  $user = $db->select("SELECT id, email, `password` FROM `users` WHERE email = :email;", $params);
+
+  if ($user == FALSE) {
+    $_SESSION["error_message"] = "E-mail адреса или паролата са невавидни.";
+    return;
+  }
+
+  $isValidPassword = password_verify($password, $user[0]["password"]);
+
+  if ($isValidPassword == FALSE) {
+    $_SESSION["error_message"] = "E-mail адреса или паролата са невавидни.";
+    return;
+  }
+
+  $params = array(
+    ":user_id" => $user[0]["id"],
+  );
+  $isSessionExists = $db->select("SELECT * FROM `sessions` WHERE user_id = :user_id;", $params);
+
+  if ($isSessionExists != FALSE) {
+    logout($user[0]["id"]);
+  }
+
+  $token = generateToken();
+  $tokenExpiry = time() + 3600; // 60 minutes
+
+  $db->insert("sessions", array(
+    "user_id" => $user[0]["id"],
+    "token" => $token,
+    "token_expiry" => $tokenExpiry,
+  ));
+
+  afterLogin(array(
+    "id" => $user["id"],
+    "password" => $user["password"],
+    "token" => $token,
+  ));
 }
