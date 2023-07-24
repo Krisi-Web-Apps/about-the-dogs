@@ -1,11 +1,15 @@
 :root {
   --text-heading-color: #292929;
   --text-body-color: #4d4b4b;
+  --font-size: 18px;
+  --btn-bg-color: #2e2ed7;
+  --btn-hover-bg-color: #5050dd;
 }
 
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: var(--text-body-color);
+  font-size: var(--font-size);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -25,4 +29,18 @@ h1, h2, h3, h4, h5, h6 {
 .home-section-content {
   max-width: 600px;
   text-align: justify;
+}
+
+.auth-container {
+  max-width: 600px;
+}
+
+.btn.btn-primary {
+  background-color: var(--btn-bg-color);
+  font-size: inherit;
+  padding: 1rem 1.5rem;
+}
+
+.btn.btn-primary:hover {
+  background-color: var(--btn-hover-bg-color);
 }

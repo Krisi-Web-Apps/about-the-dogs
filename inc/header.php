@@ -8,5 +8,5 @@
   <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/css/index.css">
 </head>
-<body>
+<body class="bg-light-gray">
 <main>
