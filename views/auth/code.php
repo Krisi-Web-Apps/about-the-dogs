@@ -7,7 +7,7 @@ if ($_POST["type-form"] == "register") {
   $fullname = htmlspecialchars($_POST["fullname"]);
   $remember = isset($_POST["remember"]) ? $_POST["remember"] : FALSE;
 
-  if (empty($email) || empty($password) || empty($cpassword) || empty($fullname) || empty($remember)) {
+  if (empty($email) || empty($password) || empty($cpassword) || empty($fullname)) {
     $_SESSION["error_message"] = "Всички полета са задължителни.";
     return;
   }
@@ -22,12 +22,16 @@ if ($_POST["type-form"] == "register") {
     return;
   }
 
+  $password = password_hash($password, PASSWORD_BCRYPT);
+
   $data = array(
-    "email" => $email,
-    "password" => password_hash($password, PASSWORD_BCRYPT),
-    "fullname" => $fullname,
+    "email" => "$email",
+    "password" => "$password",
+    "fullname" => "$fullname",
   );
 
   $_SESSION["success_message"] = "Вие се регистрирахте успешно.";
+  global $db;
   $db->insert("users", $data);
+  header("Location: /");
 }

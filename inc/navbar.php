@@ -1,10 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="/">
+      <img width="40" height="40" class="rounded-circle" src="/assets/images/капибара.jpg" alt="Капибара">
+      <span>Капибара</span>
+    </a>
+    <button data-navbar-toggler class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Отваряне на менюто">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbar-items">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Начало</a>

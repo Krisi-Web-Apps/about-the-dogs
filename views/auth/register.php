@@ -10,11 +10,11 @@ $page_desc = "Тук можете да се регистрирате в сист
 ?>
 <?php require "inc/header.php" ?>
 <?php require "inc/navbar.php" ?>
-<?php require "messages/success.php" ?>
-<?php require "messages/error.php" ?>
 
-<div class="bg-light auth-container mx-auto mt-4 shadow rounded">
-  <div class="p-5 border">
+<div class="auth-container mx-auto mt-4">
+  <?php require "messages/success.php" ?>
+  <?php require "messages/error.php" ?>
+  <div class="bg-light p-5 border shadow rounded">
     <h1 class="text-center"><?= $page_title ?></h1>
     <form method="post">
       <div class="mb-3">
