@@ -1,5 +1,8 @@
 RewriteEngine On
 
+RewriteRule ^admin/assets/css - [L]
+RewriteRule ^admin/assets/js - [L]
+
 # Изключете правилото за папката "admin"
 RewriteCond %{REQUEST_URI} !^/admin/
 
@@ -9,3 +12,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # Пренасочете към index.php
 RewriteRule ^(.*)$ index.php [L]
+
+# Пренасочете към index.php в директорията admin
+RewriteRule ^admin/(.*)$ admin/index.php [L]

@@ -1,6 +1,6 @@
 <?php
 
-require 'classes/Autoloader.php';
+require 'admin/classes/Autoloader.php';
 Autoloader::register();
 
 require "config.php";
