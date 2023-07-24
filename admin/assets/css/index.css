@@ -1,0 +1,55 @@
+:root {
+  --text-heading-color: #292929;
+  --text-body-color: #4d4b4b;
+  --light-gray-color: #efefef;
+  --font-size: 18px;
+  --btn-bg-color: #2e2ed7;
+  --btn-hover-bg-color: #5050dd;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: var(--text-body-color);
+  font-size: var(--font-size);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: var(--text-heading-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+.sidebar-item.active {
+  background-color: var(--btn-bg-color);
+  color: #ffffff;
+}
+
+.sidebar-item {
+  background-color: var(--light-gray-color);
+  color: var(--text-heading-color);
+}
+
+.offcanvas-button {
+  position: fixed;
+  bottom: 0;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 40px #c4c4c4;
+  font-size: 30px;
+  color: #ffffff;
+  background-color: var(--btn-bg-color);
+  border: none;
+  margin: 4rem;
+  border-radius: 50%;
+  transition: all 200ms ease-in-out;
+}
+
+.offcanvas-button:hover {
+  background-color: var(--btn-hover-bg-color);
+}

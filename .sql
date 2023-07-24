@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `capybara`.`users` (
   `password` VARCHAR(255) NOT NULL,
   `city` VARCHAR(75) NULL,
   `fullname` VARCHAR(75) NOT NULL,
+  `role_as` VARCHAR(20) NOT NULL DEFAULT `user`,
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE (`email`)
