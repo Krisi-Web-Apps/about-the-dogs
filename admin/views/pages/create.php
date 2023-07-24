@@ -1,4 +1,9 @@
 <?php
+
+if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+  require "code.php";
+}
+
 $site_lang = "bg";
 $page_title = "Създаване на страница";
 ?>
