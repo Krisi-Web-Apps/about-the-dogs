@@ -26,7 +26,7 @@ function generateToken()
 }
 
 function logout($userId = NULL) {
-  if (isset($_SESSION["auth"]) == FALSE) {
+  if ($userId != NULL) {
     $_SESSION["worning_message"] = "Вие вече сте изван системата.";
     $_SESSION["auth"] = array(
       "user_id" => $userId,

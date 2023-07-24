@@ -81,8 +81,8 @@ if ($_POST["type-form"] == "login") {
   );
   $isSessionExists = $db->select("SELECT * FROM `sessions` WHERE user_id = :user_id;", $params);
 
-  if ($isSessionExists != FALSE) {
-    logout($user[0]["id"]);
+  if ($isSessionExists) {
+    logout($isSessionExists[0]["user_id"]);
   }
 
   $token = generateToken();
