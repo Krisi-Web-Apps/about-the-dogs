@@ -1,7 +1,5 @@
 <?php
 
-require "../middlewares/is-authenticated.php";
-
 if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
   require "code.php";
 }
@@ -19,7 +17,14 @@ $pages = $db->select("SELECT * FROM `pages`;");
 <div class="container mx-auto">
   <div class="d-flex justify-content-between align-items-center py-4">
     <h1>
-      <?= $page_title ?>
+      <span>
+        <?= $page_title ?>
+      </span>
+      <?php if (count($pages)): ?>
+        <span>(
+          <?= count($pages) ?>)
+        </span>
+      <?php endif; ?>
     </h1>
     <a class="btn btn-primary d-flex align-items-center gap-2" href="pages/create">
       <i class="fas fa-plus"></i>

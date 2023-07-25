@@ -1,4 +1,5 @@
 <?php
+
 $site_lang = "bg";
 $page_title = "Администрация";
 ?>
