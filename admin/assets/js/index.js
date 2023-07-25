@@ -1,6 +1,6 @@
 document
   .querySelector("[data-navbar-toggler]")
-  .addEventListener("click", toggle);
+  ?.addEventListener("click", toggle);
 
 function toggle() {
   if (document.getElementById("navbar-items").classList.contains("show")) {

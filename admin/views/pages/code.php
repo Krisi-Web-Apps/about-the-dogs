@@ -34,4 +34,30 @@ if ($_POST["type-form"] == "create") {
   $db->insert("pages", $data);
   $_SESSION["success_message"] = "Страницата бе създадена успешно.";
   header("Location: /admin/pages");
+  exit;
+}
+
+if ($_POST["type-form"] == "delete") {
+  $id = $_POST["id"];
+
+  if (empty($id)) {
+    $_SESSION["error_message"] = "Невалидно id на страница.";
+    return;
+  }
+
+  global $db;
+
+  $params = array(":id" => $id);
+  $isPageExists = $db->select("SELECT id FROM `pages` WHERE id = :id", $params);
+
+  if ($isPageExists == FALSE) {
+    $_SESSION["error_message"] = "Подаденото id на страница не съществува.";
+    return;
+  }
+
+  $params = array(":id" => $id);
+  $db->delete("pages", "id = :id", $params);
+  $_SESSION["success_message"] = "Страницата бе изтрите успешно.";
+  header("Location: /admin/pages");
+  exit;
 }

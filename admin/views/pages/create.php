@@ -20,7 +20,7 @@ $page_title = "Създаване на страница";
     <form method="post">
       <div class="mb-3">
         <label for="title" class="form-label">Заглавие</label>
-        <input type="text" class="form-control" name="title" id="title" value="<?= isset($title) ? $title : null ?>" required>
+        <input type="text" class="form-control" name="title" id="title" value="<?= isset($title) ? $title : null ?>" autofocus required>
       </div>
       <div class="mb-3">
         <label for="meta_title" class="form-label">Мета заглавие</label>
@@ -32,7 +32,8 @@ $page_title = "Създаване на страница";
       </div>
       <div class="mb-3">
         <label for="meta_keywords" class="form-label">Мета ключови думи</label>
-        <textarea class="form-control" name="meta_keywords" id="meta_keywords" rows="2"></textarea>
+        <textarea class="form-control" placeholder="Пример: програмиране, компютърни науки, компютъри..." name="meta_keywords" id="meta_keywords" rows="2"></textarea>
+        <div class="text-secondary">Въведете ключови думи разделени със запетая и празно пространство.</div>
       </div>
       <div class="mb-3">
         <label for="slug" class="form-label">Език</label>
