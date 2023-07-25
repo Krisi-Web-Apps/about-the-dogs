@@ -1,5 +1,7 @@
 <?php
 
+require "../middlewares/is-admin.php";
+
 if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
   require "code.php";
 }

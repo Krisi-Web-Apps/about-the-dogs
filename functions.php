@@ -53,6 +53,21 @@ function isAuthenticated() {
   return $session != FALSE;
 }
 
+function isAdmin() {
+  global $db;
+
+  if (isset($_SESSION["user_id"]) == FALSE) {
+    return FALSE;
+  }
+
+  $params = array(
+    ":id" => $_SESSION["user_id"],
+    ":role_as" => "admin"
+  );
+  $user = $db->select("SELECT * FROM `users` WHERE id = :id AND role_as = :role_as;", $params);
+  return $user != FALSE;
+}
+
 function setSession($auth) {
   $_SESSION["user_id"] = $auth["user_id"];
   $_SESSION["user_password"] = $auth["user_password"];

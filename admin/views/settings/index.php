@@ -1,7 +1,7 @@
 <?php
 
 $site_lang = "bg";
-$page_title = "Табло";
+$page_title = "Настройки";
 ?>
 
 <?php require "inc/header.php" ?>
@@ -16,9 +16,7 @@ $page_title = "Табло";
     </h1>
   </div>
 </div>
-<div class="container mx-auto">
-  <?php require "../messages/success.php" ?>
-  <?php require "../messages/error.php" ?>
-</div>
+<?php require "../messages/success.php" ?>
+<?php require "../messages/error.php" ?>
 
 <?php require "inc/footer.php" ?>

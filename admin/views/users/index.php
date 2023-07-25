@@ -4,6 +4,8 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
   require "code.php";
 }
 
+require "helper/constants.php";
+
 $site_lang = "bg";
 $page_title = "Потребители";
 
@@ -35,6 +37,9 @@ $users = $db->select("SELECT * FROM `users`;");
       <tr>
         <th scope="col">Име</th>
         <th scope="col">E-mail</th>
+        <th scope="col">Град</th>
+        <th scope="col">Роля</th>
+        <th scope="col">Регистриран на</th>
       </tr>
     </thead>
     <tbody>
@@ -46,6 +51,15 @@ $users = $db->select("SELECT * FROM `users`;");
             </th>
             <td>
               <?= $user["email"] ?>
+            </td>
+            <td>
+              <?= $user["city"] ?>
+            </td>
+            <td>
+              <?= $rolesArray[$user["role_as"]] ?>
+            </td>
+            <td>
+              <?= $user["created_at"] ?>
             </td>
           </tr>
         <?php endforeach; ?>
