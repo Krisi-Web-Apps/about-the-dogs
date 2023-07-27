@@ -21,6 +21,14 @@ $page_contents = $db->select("SELECT * FROM `manage_page_content` WHERE page_id 
         <div id="panelsStayOpen-collapse-<?= $page_content["id"] ?>" class="accordion-collapse collapse">
           <div class="accordion-body">
             <?= nl2br($page_content["text"]) ?>
+            <hr class="my-2" />
+            <div>
+              <form id="delete-page-content">
+                <input type="hidden" id="path" name="path" value="/admin/manage-page-content/delete/">
+                <input type="hidden" id="id" name="id" value="<?= $page_content["id"] ?>">
+                <button type="button" class="btn text-danger" onclick="deletePageContent(event)">Изтриване</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
