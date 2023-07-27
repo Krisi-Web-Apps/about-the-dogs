@@ -15,7 +15,7 @@ if ($_POST["type-form"] == "create") {
 
   global $db;
   
-  $params = array("slug" => $slug);
+  $params = array(":slug" => $slug);
   $isPageExists = $db->select("SELECT * FROM `pages` WHERE slug = :slug", $params);
 
   if ($isPageExists != FALSE) {
@@ -58,6 +58,45 @@ if ($_POST["type-form"] == "delete") {
   $params = array(":id" => $id);
   $db->delete("pages", "id = :id", $params);
   $_SESSION["success_message"] = "Страницата бе изтрите успешно.";
+  header("Location: /admin/pages");
+  exit;
+}
+
+if ($_POST["type-form"] == "edit") {
+  $title = htmlspecialchars($_POST["title"]);
+  $meta_title = htmlspecialchars($_POST["meta_title"]);
+  $meta_description = htmlspecialchars($_POST["meta_description"]);
+  $meta_keywords = htmlspecialchars($_POST["meta_keywords"]);
+  $slug = htmlspecialchars($_POST["slug"]);
+  $lang = htmlspecialchars($_POST["lang"]);
+  $id = $_POST["id"];
+
+  if (empty($title) || empty($meta_title) || empty($meta_description) || empty($meta_keywords) || empty($slug) || empty($lang)) {
+    $_SESSION["error_message"] = "Всички полета са зъдължителни.";
+    return;
+  }
+
+  global $db;
+  
+  $params = array(":slug" => $slug);
+  $isPageExists = $db->select("SELECT * FROM `pages` WHERE slug = :slug", $params);
+
+  if ($isPageExists == FALSE) {
+    $_SESSION["error_message"] = "Тази страница не вече съществува.";
+    return;
+  }
+
+  $data= array(
+    "title" => $title,
+    "meta_title" => $meta_title,
+    "meta_description" => $meta_description,
+    "meta_keywords" => $meta_keywords,
+    "slug" => $slug,
+    "lang" => $lang,
+  );
+
+  $db->update("pages", $data, "id = $id");
+  $_SESSION["success_message"] = "Редакцията на страницата е изпълнена успешно.";
   header("Location: /admin/pages");
   exit;
 }

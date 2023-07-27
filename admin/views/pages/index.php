@@ -76,6 +76,9 @@ $pages = $db->select("SELECT * FROM `pages`;");
                 </button>
                 <ul class="dropdown-menu">
                   <li>
+                    <li>
+                      <a href="/admin/pages/edit/<?= $page["id"] ?>" class="dropdown-item">Редактиране</a>
+                    </li>
                     <form method="post">
                       <input type="hidden" name="id" value="<?= $page["id"] ?>">
                       <button type="submit" name="type-form" value="delete"
