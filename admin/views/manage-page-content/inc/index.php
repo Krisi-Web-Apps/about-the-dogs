@@ -33,5 +33,9 @@ $page_contents = $db->select("SELECT * FROM `manage_page_content` WHERE page_id 
         </div>
       </div>
     <?php endforeach; ?>
+  <?php else: ?>
+    <div class="alert alert-info">
+      Все още нямате създадени полета към тази страница
+    </div>
   <?php endif; ?>
 </div>

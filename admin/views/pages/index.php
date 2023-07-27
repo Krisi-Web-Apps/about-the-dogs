@@ -26,10 +26,12 @@ $pages = $db->select("SELECT * FROM `pages`;");
         </span>
       <?php endif; ?>
     </h1>
-    <a class="btn btn-primary d-flex align-items-center gap-2" href="pages/create">
-      <i class="fas fa-plus"></i>
-      <span>Създаване на нова</span>
-    </a>
+    <?php if ($_SESSION["role_as"] == "admin"): ?>
+      <a class="btn btn-primary d-flex align-items-center gap-2" href="pages/create">
+        <i class="fas fa-plus"></i>
+        <span>Създаване на нова</span>
+      </a>
+    <?php endif; ?>
   </div>
 
   <?php require "../messages/success.php" ?>
@@ -76,20 +78,29 @@ $pages = $db->select("SELECT * FROM `pages`;");
                 </button>
                 <ul class="dropdown-menu">
                   <li>
-                    <li>
-                      <a href="/admin/pages/view/<?= $page["id"] ?>" class="dropdown-item">Преглед</a>
-                    </li>
-                    <li>
-                      <a href="/admin/pages/edit/<?= $page["id"] ?>" class="dropdown-item">Редактиране</a>
-                    </li>
-                    <li>
-                      <a href="/admin/manage-page-content/<?= $page["id"] ?>" class="dropdown-item">Управление на съдържанието на страницата</a>
-                    </li>
-                    <form method="post">
-                      <input type="hidden" name="id" value="<?= $page["id"] ?>">
-                      <button type="submit" name="type-form" value="delete"
-                        class="dropdown-item text-danger">Изтриване</button>
-                    </form>
+                    <ul class="p-0">
+                      <li class="dropdown-item">
+                        <a href="/admin/pages/view/<?= $page["id"] ?>" class="dropdown-item">Преглед</a>
+                      </li>
+                      <?php if ($_SESSION["role_as"] == "admin"): ?>
+                        <li class="dropdown-item">
+                          <a href="/admin/pages/edit/<?= $page["id"] ?>" class="dropdown-item">Редактиране</a>
+                        </li>
+                      <?php endif; ?>
+                      <li class="dropdown-item">
+                        <a href="/admin/manage-page-content/<?= $page["id"] ?>" class="dropdown-item">Управление на
+                          съдържанието на страницата</a>
+                      </li>
+                      <?php if ($_SESSION["role_as"] == "admin"): ?>
+                        <li class="dropdown-item">
+                          <form method="post">
+                            <input type="hidden" name="id" value="<?= $page["id"] ?>">
+                            <button type="submit" name="type-form" value="delete"
+                              class="dropdown-item text-danger">Изтриване</button>
+                          </form>
+                        </li>
+                      <?php endif; ?>
+                    </ul>
                   </li>
                 </ul>
               </div>

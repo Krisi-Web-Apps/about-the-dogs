@@ -68,7 +68,9 @@ $page_title = "Редактиране на страница";
     </ul>
   </div>
 
-  <a href="/admin/pages/edit/<?= $page["id"] ?>" class="btn btn-primary">Редактиране</a>
-  <a href="/admin/manage-page-content/<?= $page["id"] ?>" class="btn btn-primary">Управление на съдържанието на страницата</a>
-  <a href="/admin/pages" class="btn btn-warning">Преглед на всички</a>
+  <div class="d-flex flex-column gap-2">
+    <a href="/admin/pages/edit/<?= $page["id"] ?>" class="btn btn-primary">Редактиране</a>
+    <a href="/admin/manage-page-content/<?= $page["id"] ?>" class="btn btn-primary">Управление на съдържанието на страницата</a>
+    <a href="/admin/pages" class="btn btn-warning">Преглед на всички</a>
+  </div>
 </div>

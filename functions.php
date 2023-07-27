@@ -72,10 +72,12 @@ function setSession($auth) {
   $_SESSION["user_id"] = $auth["user_id"];
   $_SESSION["user_password"] = $auth["user_password"];
   $_SESSION["token"] = $auth["token"];
+  $_SESSION["role_as"] = $auth["role_as"];
 }
 
 function unsetSession() {
   unset($_SESSION["user_id"]);
   unset($_SESSION["user_password"]);
   unset($_SESSION["token"]);
+  unset($_SESSION["role_as"]);
 }

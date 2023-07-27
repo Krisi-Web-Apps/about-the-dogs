@@ -38,6 +38,7 @@ if ($_POST["type-form"] == "create") {
 }
 
 if ($_POST["type-form"] == "delete") {
+  require "../middlewares/is-admin.php";
   $id = $_POST["id"];
 
   if (empty($id)) {
