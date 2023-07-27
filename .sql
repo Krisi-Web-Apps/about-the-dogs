@@ -30,3 +30,13 @@ CREATE TABLE `capybara`.`pages` (
   PRIMARY KEY (`id`),
   UNIQUE (`slug`)
 ) ENGINE = InnoDB;
+
+CREATE TABLE `manage_page_content` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(75) NOT NULL,
+  `text` LONGTEXT NOT NULL,
+  `comment` LONGTEXT NULL,
+  `page_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX (`name`)
+) ENGINE = InnoDB;

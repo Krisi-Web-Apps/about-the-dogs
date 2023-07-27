@@ -70,4 +70,5 @@ $page_title = "Редактиране на страница";
 
   <a href="/admin/pages/edit/<?= $page["id"] ?>" class="btn btn-primary">Редактиране</a>
   <a href="/admin/pages" class="btn btn-warning">Преглед на всички</a>
+  <a href="/admin/manage-page-content/<?= $page["id"] ?>" class="btn btn-primary">Управление на съдържанието на страницата</a>
 </div>
