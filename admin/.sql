@@ -1,5 +1,7 @@
+CREATE DATABASE IF NOT EXISTS `website-template-php`;
+
 -- create table users.
-CREATE TABLE IF NOT EXISTS `capybara`.`users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(75) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
@@ -12,14 +14,14 @@ CREATE TABLE IF NOT EXISTS `capybara`.`users` (
 ) ENGINE = InnoDB;
 
 -- create table sessions
-CREATE TABLE IF NOT EXISTS `capybara`.`sessions` (
+CREATE TABLE IF NOT EXISTS `sessions` (
   `user_id` INT NOT NULL,
   `token` VARCHAR(1000) NOT NULL,
   `token_expiry` INT(11) NOT NULL,
   UNIQUE (`user_id`)
 ) ENGINE = InnoDB;
 
-CREATE TABLE `capybara`.`pages` (
+CREATE TABLE `pages` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(75) NOT NULL,
   `meta_title` VARCHAR(120) NOT NULL,
@@ -31,7 +33,7 @@ CREATE TABLE `capybara`.`pages` (
   UNIQUE (`slug`)
 ) ENGINE = InnoDB;
 
-CREATE TABLE `manage_page_content` (
+CREATE TABLE IF NOT EXISTS `manage_page_content` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(75) NOT NULL,
   `text` LONGTEXT NOT NULL,

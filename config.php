@@ -3,7 +3,7 @@
 define("HOST", "localhost");
 define("DATABASE_USER", "root");
 define("DATABASE_PASSWORD", "root");
-define("DATABASE_NAME", "capybara");
+define("DATABASE_NAME", "website-template-php");
 define("CHARSET", "utf8");
 
 error_reporting(E_ALL);

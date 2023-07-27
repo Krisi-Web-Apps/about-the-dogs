@@ -5,5 +5,5 @@ Autoloader::register();
 
 require "config.php";
 
-require "functions.php";
+require "admin/functions.php";
 require "router/index.php";
