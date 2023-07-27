@@ -11,7 +11,7 @@ global $db;
 $params = array(":id" => $id);
 $page = $db->select("SELECT * FROM `pages` WHERE id = :id", $params)[0];
 
-$site_lang = "bg";
+$site_lang = $page["lang"];
 $page_title = "Редактиране на страница";
 ?>
 <?php require "inc/header.php" ?>
@@ -68,6 +68,7 @@ $page_title = "Редактиране на страница";
           <button name="type-form" value="edit" type="submit" class="btn btn-primary">
             <?= $page_title ?>
           </button>
+          <a href="/admin/pages" class="btn btn-info">Преглед на всички</a>
         </div>
       </div>
     </form>

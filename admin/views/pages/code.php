@@ -78,8 +78,8 @@ if ($_POST["type-form"] == "edit") {
 
   global $db;
   
-  $params = array(":slug" => $slug);
-  $isPageExists = $db->select("SELECT * FROM `pages` WHERE slug = :slug", $params);
+  $params = array(":id" => $id);
+  $isPageExists = $db->select("SELECT * FROM `pages` WHERE id = :id", $params);
 
   if ($isPageExists == FALSE) {
     $_SESSION["error_message"] = "Тази страница не вече съществува.";

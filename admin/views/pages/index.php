@@ -77,6 +77,9 @@ $pages = $db->select("SELECT * FROM `pages`;");
                 <ul class="dropdown-menu">
                   <li>
                     <li>
+                      <a href="/admin/pages/view/<?= $page["id"] ?>" class="dropdown-item">Преглед</a>
+                    </li>
+                    <li>
                       <a href="/admin/pages/edit/<?= $page["id"] ?>" class="dropdown-item">Редактиране</a>
                     </li>
                     <form method="post">

@@ -50,6 +50,7 @@ $page_title = "Създаване на страница";
       <div class="d-flex align-items-center gap-4 mt-4">
         <div class="text-center">
           <button name="type-form" value="create" type="submit" class="btn btn-primary"><?= $page_title ?></button>
+          <a href="/admin/pages" class="btn btn-warning">Преглед на всички</a>
         </div>
       </div>
     </form>

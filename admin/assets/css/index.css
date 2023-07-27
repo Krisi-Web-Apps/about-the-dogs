@@ -22,6 +22,10 @@ a {
   text-decoration: none;
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
 .sidebar-item.active {
   background-color: var(--btn-bg-color);
   color: #ffffff;
